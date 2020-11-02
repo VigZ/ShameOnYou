@@ -45,3 +45,16 @@ class Shame(commands.Cog):
     async def current_intensity(self, ctx):
         response = f'The current intensity is {self.shame_intensity.name}'
         await ctx.send(response)
+
+    @commands.command(name='shamecorner', help='Sends a particular user to the shame corner with the bot.')
+    async def send_to_shame_corner(self, ctx, member: discord.Member):
+        voice_channel_list = ctx.guild.voice_channels
+        channel = discord.utils.find(lambda c: c.name == 'Shame Corner', voice_channel_list)
+        if channel is not None:
+            vc = await channel.connect()
+            vc.play(discord.FFmpegPCMAudio('Audio/got-shame.mp3'), after=lambda e: print('done', e))
+            while not vc.is_playing():
+                await asyncio.sleep(1)
+            # disconnect after the player has finished
+            vc.stop()
+            await vc.disconnect()
