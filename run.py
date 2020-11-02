@@ -6,7 +6,9 @@ from discord.ext import commands
 from dotenv import load_dotenv
 from BotIntensity import ShameIntensity
 from quips import SHAME_QUIPS, ENCOURAGEMENT_QUIPS
+from Cogs.Encouragement import Encouragement
 from Cogs.Shame import Shame
+
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -14,6 +16,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 accountability_bot = commands.Bot(command_prefix="!")
 accountability_bot.add_cog(Shame(accountability_bot))
+accountability_bot.add_cog(Encouragement(accountability_bot))
 
 @accountability_bot.event
 async def on_ready():

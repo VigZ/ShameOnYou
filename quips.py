@@ -20,18 +20,18 @@ SHAME_QUIPS = {
 
 ENCOURAGEMENT_QUIPS = {
     EncouragementIntensity.light_encouragement: [
-        "Honey, I know you're busy, but you should really try to get some work done this week!"
+        "Never let a bad day bring out the worst in you. You're awesome!"
     ] ,
     EncouragementIntensity.moderate_encourement: [
-        "Don't let everything get you down, keep at it!"
+        "In the middle of every difficulty lies opportunity. Keep at it!"
     ] ,
     EncouragementIntensity.empowering: [
-        "Oof, seems like someone was lazy this week. Next time try harder, ok?"
+        "It doesn’t matter who you are, where you come from. The ability to triumph begins with you. Always."
     ] ,
     EncouragementIntensity.pregame_speech: [
-        "Hey everyone! This guy procrastinates and wastes EVERYONE's time! I'm sure he smells bad too."
+        "Champions do not become champions when they win the event, but in the hours, weeks, months and years they spend preparing for it. The victorious performance itself is merely the demonstration of their championship character."
     ] ,
     EncouragementIntensity.speech_with_epic_music:[
-        "YOU FUCKING PIECE OF SHIT. DO YOUR WORK OR I'LL GO TO YOUR HOUSE AND BREAK YOUR KNEES."
+        "We're not goons. We're not bullies. No matter what people say or do... we have to be ourselves. And we're gonna stick together. You know why? Because we are Ducks. And ducks fly together."
     ] ,
 }
