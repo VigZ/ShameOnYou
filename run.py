@@ -26,7 +26,7 @@ async def on_ready():
 async def on_member_join(member):
     await member.create_dm()
     await member.dm_channel.send(
-        f'Hello {member.name}, welcome to {GUILD}! \n My name is {accountability_bot.name}, let\'s keep eachother accountable, and be productive! \n Remember, I am always watching....'
+        f'Hello {member.name}, welcome to {GUILD}! \n My name is {accountability_bot.users.name}, let\'s keep eachother accountable, and be productive! \n Remember, I am always watching....'
     )
 
 
