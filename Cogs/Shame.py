@@ -52,6 +52,7 @@ class Shame(commands.Cog):
 
     @commands.command(name='shamecorner', help='Sends a particular user to the shame corner with the bot.')
     async def send_to_shame_corner(self, ctx, member: discord.Member):
+        previous_member_channel = member.voice.channel
         voice_channel_list = ctx.guild.voice_channels
         channel = discord.utils.find(lambda c: c.name == f'{constants.SHAME_CORNER_CHANNEL_NAME}', voice_channel_list)
         # Find specific channel for the shame corner.
@@ -68,3 +69,4 @@ class Shame(commands.Cog):
             # # disconnect after the player has finished
             vc.stop()
             await vc.disconnect()
+            await member.move_to(previous_member_channel, reason="PUNISHMENT CONCLUDED")
