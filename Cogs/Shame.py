@@ -1,5 +1,6 @@
 import discord
 import discord.ext.commands as commands
+import asyncio
 from BotIntensity import ShameIntensity, EncouragementIntensity
 from quips import SHAME_QUIPS
 
@@ -53,8 +54,8 @@ class Shame(commands.Cog):
         if channel is not None:
             vc = await channel.connect()
             vc.play(discord.FFmpegPCMAudio('Audio/got-shame.mp3'), after=lambda e: print('done', e))
-            while not vc.is_playing():
+            while vc.is_playing():
                 await asyncio.sleep(1)
-            # disconnect after the player has finished
+            # # disconnect after the player has finished
             vc.stop()
             await vc.disconnect()
