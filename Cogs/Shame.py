@@ -1,10 +1,13 @@
 import discord
 import discord.ext.commands as commands
 import asyncio
+import random
+
 from BotIntensity import ShameIntensity, EncouragementIntensity
 from quips import SHAME_QUIPS
 
-import random
+import constants
+
 
 class Shame(commands.Cog):
     def __init__(self, bot):
@@ -50,11 +53,17 @@ class Shame(commands.Cog):
     @commands.command(name='shamecorner', help='Sends a particular user to the shame corner with the bot.')
     async def send_to_shame_corner(self, ctx, member: discord.Member):
         voice_channel_list = ctx.guild.voice_channels
-        channel = discord.utils.find(lambda c: c.name == 'Shame Corner', voice_channel_list)
+        channel = discord.utils.find(lambda c: c.name == f'{constants.SHAME_CORNER_CHANNEL_NAME}', voice_channel_list)
+        # Find specific channel for the shame corner.
         if channel is not None:
             vc = await channel.connect()
+            #Pull targeted user to channel if they are in voice channel.
+            await member.move_to(channel, reason="SHAME TIME")
+            vc.volume = 1.0
             vc.play(discord.FFmpegPCMAudio('Audio/got-shame.mp3'), after=lambda e: print('done', e))
             while vc.is_playing():
+                if member.voice.channel != channel:
+                    await member.move_to(channel, reason="WHERE ARE YOU GOING")
                 await asyncio.sleep(1)
             # # disconnect after the player has finished
             vc.stop()

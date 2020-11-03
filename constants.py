@@ -1,0 +1,1 @@
+SHAME_CORNER_CHANNEL_NAME="Shame Corner"
